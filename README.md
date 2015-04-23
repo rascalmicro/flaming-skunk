@@ -11,4 +11,4 @@ Flaming lights for Fleet Admiral Skunk's ship, USB Cloudbuster (http://www.scul.
 
 4. Get libpruio initialized properly.
 
-5. Start OPC server at boot.
+5. Put `fcserver.json` at `/etc/fcserver.json` and update the Fadecandy serial in the file to the correct one, which you can get from `dmesg`.
