@@ -2,6 +2,7 @@
 
 # Light each LED in sequence, and repeat.
 
+import bbio
 import colorsys, opc, subprocess, time
 from PIL import Image
 
@@ -20,8 +21,19 @@ pixels = [ (0,0,0) ] * numLEDs
 
 while True:
     for row in range(height):
-        readings = subprocess.check_output('read-adc')
-        shift = float(int(readings.split('\n')[4].split(' ')[2], 16))/65536.0
+#        try:
+            # readings = subprocess.check_output('read-adc')
+            # shift = float(int(readings.split('\n')[4].split(' ')[2], 16))/65536.0
+#        f = open('/var/www/public/color.txt', 'r')
+#        color = f.read()
+#        f.close()
+#        (red,green,blue) = color.strip().split(',')
+#        shift, nothing, whatever = colorsys.rgb_to_hsv(float(red)/255.0, float(green)/255.0, float(blue)/255.0)
+        shift = float(bbio.analogRead(bbio.AIN1))/1400.0
+        print('Shift is {0}'.format(shift))
+     #       except:
+     #       shift = 0.0
+     #       print('Shift is {0}'.format(shift))
         for i in range(numLEDs):
             r, g, b = im.getpixel((i * spacing, row))
             h, s, v = colorsys.rgb_to_hsv(r/255.0, g/255.0, b/255.0)

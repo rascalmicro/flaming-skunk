@@ -7,7 +7,7 @@ Flaming lights for Fleet Admiral Skunk's ship, USB Cloudbuster (http://www.scul.
 
 2. `git clone git@github.com:rascalmicro/flaming-skunk.git`
 
-3. Add file to `/etc/supervisor/conf.d` to start `flames.py` at boot.
+3. Move `sternoslomo.conf` to `/etc/supervisor/conf.d/sternoslomo.conf` to start `flames.py` at boot.
 
 4. Get libpruio initialized properly.
 
