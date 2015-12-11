@@ -4,7 +4,7 @@ Works on the Rascal 2, available at http://rascalmicro.com
 
 ### Installation ###
 
-1. `git clone git@github.com:rascalmicro/flaming-skunk.git`
+1. `git clone https://github.com/rascalmicro/flaming-skunk.git`
 
 2. Move `sternoslomo.conf` to `/etc/supervisor/conf.d/sternoslomo.conf` to start `flames.py` at boot.
 
