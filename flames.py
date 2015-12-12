@@ -2,7 +2,6 @@
 
 # Light each LED in sequence, and repeat.
 
-import bbio
 import colorsys, opc, subprocess, time
 from PIL import Image
 
@@ -19,6 +18,10 @@ spacing = width / numLEDs
 
 pixels = [ (0,0,0) ] * numLEDs
 
+from socket import *
+s = socket(AF_INET, SOCK_DGRAM)
+s.bind(("127.0.0.1",10000))
+
 while True:
     for row in range(height):
 #        try:
@@ -29,7 +32,9 @@ while True:
 #        f.close()
 #        (red,green,blue) = color.strip().split(',')
 #        shift, nothing, whatever = colorsys.rgb_to_hsv(float(red)/255.0, float(green)/255.0, float(blue)/255.0)
-        shift = float(bbio.analogRead(bbio.AIN1))/1400.0
+        data, addr = s.recvfrom(100)
+        # data should be in the format: shift, fire/nofire
+        shift = float(data.split(",")[0]) #float(bbio.analogRead(bbio.AIN1))/1400.0
         print('Shift is {0}'.format(shift))
      #       except:
      #       shift = 0.0
